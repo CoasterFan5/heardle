@@ -76,12 +76,12 @@
 			return;
 		}
 		ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-		ctx.fillStyle = 'black';
+		ctx.fillStyle = '#D60017';
 		ctx.fillRect(0, 0, canvasWidth * duration, canvasHeight);
 		requestAnimationFrame(guessTrackerRender);
 
 		// draw the bars
-		ctx.fillStyle = 'purple';
+		ctx.fillStyle = 'gray';
 		for (const item of durations) {
 			ctx.beginPath();
 			ctx.fillRect((item / 16) * canvasWidth, 0, 3, canvasHeight);
@@ -118,7 +118,8 @@
 
 		.guessTracker {
 			width: 100%;
-			height: 1rem;
+			height: 1.5rem;
+			border-radius: 0.25rem;
 			border: 1px solid var(--border);
 		}
 	}

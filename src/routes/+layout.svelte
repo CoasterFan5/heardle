@@ -9,3 +9,9 @@
 </svelte:head>
 
 {@render children()}
+
+<style lang="scss">
+	:global(body) {
+		--border: gray;
+	}
+</style>

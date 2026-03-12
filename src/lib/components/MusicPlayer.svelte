@@ -139,9 +139,16 @@
 			aspect-ratio: 1/1;
 			background: transparent;
 			border: 0px;
-			background: rgba(0, 0, 0, 0.1);
+			background: var(--background-alt);
+			border: 1px solid var(--border);
 			height: 2rem;
 			width: 2rem;
+			cursor: pointer;
+			transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s;
+
+			&:hover {
+				border: 1px solid var(--border-alt);
+			}
 		}
 	}
 </style>

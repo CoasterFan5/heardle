@@ -41,11 +41,10 @@
 </script>
 
 <div class="wrap">
-	<h2>Heardle New</h2>
 	{#if !hasWon}
 		{#if guessIndex < 6}
 			{#each guesses as g, index (`${g}-${index}`)}
-				<div class="guess">
+				<div class="guess" class:active={index == guessIndex}>
 					{g ?? ''}
 				</div>
 			{/each}
@@ -98,8 +97,13 @@
 		height: 1rem;
 		display: flex;
 		align-items: center;
-		padding: 0.25rem;
+		padding: 1rem;
 		justify-content: start;
+		border-radius: 0.25rem;
+
+		&.active {
+			border: 1px solid var(--border-alt);
+		}
 	}
 
 	.confettiHolder {

@@ -46,6 +46,7 @@
 		]
 	},
 	"dependencies": {
+		"@fontsource-variable/plus-jakarta-sans": "^5.2.8",
 		"@iconify-json/ph": "^1.2.2",
 		"@sveltejs/adapter-node": "^5.5.4",
 		"@types/jsonwebtoken": "^9.0.10",

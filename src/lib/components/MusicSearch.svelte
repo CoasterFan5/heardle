@@ -68,12 +68,27 @@
 		position: relative;
 		width: 100%;
 
+		input {
+			background: var(--background-alt);
+			border: 1px solid var(--border);
+			outline: 0px;
+			padding: 0.5rem;
+			border-radius: 0.25rem;
+			transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s;
+
+			&:hover {
+				border: 1px solid var(--border-alt);
+			}
+		}
+
 		.floatingSearch {
 			position: absolute;
 			top: calc(100% + 0.25rem);
 			left: 0px;
 			padding: 0.5rem;
+			background: var(--background-alt);
 			border: 1px solid var(--border);
+			border-radius: 0.25rem;
 			width: 100%;
 			box-sizing: border-box;
 			max-height: 20rem;

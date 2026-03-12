@@ -17,6 +17,9 @@ importers:
       jsonwebtoken:
         specifier: ^9.0.3
         version: 9.0.3
+      svelte-confetti:
+        specifier: ^2.0.0
+        version: 2.3.2(svelte@5.53.7)
       unplugin-icons:
         specifier: ^23.0.1
         version: 23.0.1(svelte@5.53.7)
@@ -1568,6 +1571,11 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
 
+  svelte-confetti@2.3.2:
+    resolution: {integrity: sha512-cfIwoGqMPYWRYDUz2g7mG1uHYWy7VBepelQdzCC3j/M42UrAqaBYmIi9xaoQfow4fbINHO9WuARnTyK2bjjGQg==}
+    peerDependencies:
+      svelte: '>=5.0.0'
+
   svelte-eslint-parser@1.6.0:
     resolution: {integrity: sha512-qoB1ehychT6OxEtQAqc/guSqLS20SlA53Uijl7x375s8nlUT0lb9ol/gzraEEatQwsyPTJo87s2CmKL9Xab+Uw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0, pnpm: 10.30.3}
@@ -2934,6 +2942,10 @@ snapshots:
       typescript: 5.9.3
     transitivePeerDependencies:
       - picomatch
+
+  svelte-confetti@2.3.2(svelte@5.53.7):
+    dependencies:
+      svelte: 5.53.7
 
   svelte-eslint-parser@1.6.0(svelte@5.53.7):
     dependencies:

@@ -5,10 +5,12 @@
 
 	const {
 		songUrl,
-		duration
+		duration,
+		onSkip
 	}: {
 		songUrl: string;
 		duration: number; // seconds, number between 1 and 16
+		onSkip: VoidFunction;
 	} = $props();
 
 	let audioElement: undefined | HTMLAudioElement = undefined;
@@ -33,6 +35,8 @@
 			audioElement.pause();
 			audioElement.currentTime = audioElement.duration;
 			clearTimeout(to);
+			playing = false;
+			doPlay();
 			return;
 		}
 
@@ -97,7 +101,12 @@
 	<div class="buttons">
 		<button class="skipIcon" style="opacity: 0"><SkipIcon /></button>
 		<button class="playButton" onclick={doPlay}><PlayIcon /></button>
-		<button class="skipIcon"><SkipIcon /></button>
+		<button
+			class="skipIcon"
+			onclick={() => {
+				onSkip();
+			}}><SkipIcon /></button
+		>
 	</div>
 </div>
 

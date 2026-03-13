@@ -71,6 +71,7 @@
 		input {
 			background: var(--background-alt);
 			border: 1px solid var(--border);
+			font-size: 1rem;
 			outline: 0px;
 			padding: 0.5rem;
 			border-radius: 0.25rem;

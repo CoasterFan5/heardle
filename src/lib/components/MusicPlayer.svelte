@@ -33,7 +33,7 @@
 
 		if (playing) {
 			audioElement.pause();
-			audioElement.currentTime = audioElement.duration;
+			audioElement.currentTime = 0;
 			clearTimeout(to);
 			playing = false;
 			doPlay();

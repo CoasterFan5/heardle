@@ -21,7 +21,6 @@
 	setInterval(() => {
 		expiresFormat = expiresDate.fromNow();
 	}, 1000);
-	let currentDate = dayjs().format('YYYY-MM-DD');
 
 	const doShare = async () => {
 		const pluralized = guessIndex == 1 ? 'guess' : 'guesses';
@@ -34,7 +33,7 @@
 	let alreadyPlayed = $state(false);
 
 	onMount(() => {
-		const localStorePull = localStorage.getItem(currentDate);
+		const localStorePull = localStorage.getItem(data.dayId);
 		if (localStorePull != null) {
 			alreadyPlayed = true;
 			guessIndex = JSON.parse(localStorePull)['guesses'];
@@ -88,7 +87,7 @@
 			{lossScreen}
 			onWin={() => {
 				localStorage.setItem(
-					currentDate,
+					data.dayId,
 					JSON.stringify({
 						guesses: guessIndex + 1
 					})

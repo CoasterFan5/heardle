@@ -1,7 +1,8 @@
-import { pgTable, serial, integer, text } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
-export const task = pgTable('task', {
+export const dailySong = pgTable('dailySong', {
 	id: serial('id').primaryKey(),
-	title: text('title').notNull(),
-	priority: integer('priority').notNull().default(1)
+	dayId: text().notNull().unique(),
+	songId: text().notNull(),
+	picked: timestamp().notNull()
 });

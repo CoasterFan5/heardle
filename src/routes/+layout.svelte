@@ -12,7 +12,7 @@
 <div class="wrap">
 	<div class="inner">
 		<div class="header">
-			<h2>Heardle New</h2>
+			<h2>Heardle</h2>
 		</div>
 		<div class="content">
 			{@render children()}
@@ -23,7 +23,7 @@
 <style lang="scss">
 	:global(body) {
 		--color: white;
-		--accent: #f67216;
+		--accent: #d60017;
 		--border: #3b3b3c;
 		--border-alt: #626262;
 		--background: #1f1f1f;
@@ -60,6 +60,10 @@
 		align-items: center;
 		justify-content: center;
 		border-bottom: 1px solid var(--border);
+
+		h2 {
+			font-weight: 500;
+		}
 	}
 
 	.content {

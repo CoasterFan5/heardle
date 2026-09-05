@@ -11,7 +11,7 @@
 
 <div class="songCard">
 	<div class="image">
-		<AppleMusicIcon url={song.attributes.artwork.url} />
+		<AppleMusicIcon imageSize={256} url={song.attributes.artwork.url} />
 	</div>
 	<div class="text">
 		<span class="songName">
@@ -24,6 +24,11 @@
 </div>
 
 <style lang="scss">
+	.image {
+		height: 3rem;
+		width: 3rem;
+	}
+
 	.songCard {
 		display: flex;
 		flex-direction: row;

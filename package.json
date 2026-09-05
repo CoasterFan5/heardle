@@ -50,6 +50,7 @@
 		"@iconify-json/ph": "^1.2.2",
 		"@sveltejs/adapter-node": "^5.5.4",
 		"@types/jsonwebtoken": "^9.0.10",
+		"dayjs": "^1.11.20",
 		"jsonwebtoken": "^9.0.3",
 		"svelte-confetti": "^2.0.0",
 		"unplugin-icons": "^23.0.1",

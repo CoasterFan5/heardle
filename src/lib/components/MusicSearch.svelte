@@ -131,4 +131,9 @@
 			white-space: nowrap;
 		}
 	}
+
+	.image {
+		height: 2rem;
+		width: 2rem;
+	}
 </style>

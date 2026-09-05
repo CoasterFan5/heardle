@@ -1,21 +1,27 @@
 <script lang="ts">
 	import type { SongObject } from '$lib/types/song/';
+	import type { Snippet } from 'svelte';
 	import { durations } from './durations';
-	import ListenOnAppleMusic from './ListenOnAppleMusic.svelte';
 	import MusicPlayer from './MusicPlayer.svelte';
 	import MusicSearch from './MusicSearch.svelte';
-	import SongCard from './SongCard.svelte';
 	import { Confetti } from 'svelte-confetti';
 
-	const {
-		song
+	let {
+		song,
+		winScreen,
+		lossScreen,
+		guessIndex = $bindable(0),
+		onWin
 	}: {
 		song: SongObject;
+		winScreen: Snippet;
+		lossScreen: Snippet;
+		guessIndex?: number;
+		onWin?: () => void;
 	} = $props();
 
 	let guesses: (string | null)[] = $state([null, null, null, null, null, null]);
 	let hasWon = $state(false);
-	let guessIndex = $state(0);
 
 	const onGuess = (s: SongObject | undefined) => {
 		if (s) {
@@ -23,6 +29,7 @@
 
 			if (song.id == s.id) {
 				hasWon = true;
+				onWin?.();
 			}
 
 			if (
@@ -30,6 +37,7 @@
 				song.attributes.artistName == song.attributes.artistName
 			) {
 				hasWon = true;
+				onWin?.();
 			}
 			guesses[guessIndex] = `${s.attributes.name} - ${s.attributes.artistName}`;
 			guessIndex += 1;
@@ -57,9 +65,7 @@
 			/>
 			<MusicSearch onSelect={onGuess} />
 		{:else}
-			<span>You lose!</span>
-			<SongCard {song} />
-			<ListenOnAppleMusic {song} />
+			{@render lossScreen()}
 		{/if}
 	{:else}
 		<div class="confettiHolder">
@@ -73,10 +79,7 @@
 				fallDistance="100vh"
 			/>
 		</div>
-
-		<span>A virtuoso performance!</span>
-		<SongCard {song} />
-		<ListenOnAppleMusic {song} />
+		{@render winScreen()}
 	{/if}
 </div>
 

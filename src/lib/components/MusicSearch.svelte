@@ -76,6 +76,7 @@
 			padding: 0.5rem;
 			border-radius: 0.25rem;
 			transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s;
+			color: var(--color);
 
 			&:hover {
 				border: 1px solid var(--border-alt);
@@ -111,6 +112,7 @@
 		justify-content: start;
 		gap: 0.25rem;
 		width: 100%;
+		color: var(--color);
 	}
 
 	.text {

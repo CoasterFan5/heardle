@@ -140,6 +140,7 @@
 		margin-top: 0.75rem;
 
 		.button {
+			color: var(--color);
 			background: var(--background-alt);
 			border: 1px solid var(--border);
 			padding: 0.25rem;

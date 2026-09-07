@@ -148,6 +148,7 @@
 			background: transparent;
 			border: 0px;
 			background: var(--background-alt);
+			color: var(--color);
 			border: 1px solid var(--border);
 			height: 2rem;
 			width: 2rem;

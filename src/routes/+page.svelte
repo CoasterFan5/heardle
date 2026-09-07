@@ -29,14 +29,25 @@
 		});
 	};
 
+	const shareLoss = async () => {
+		await navigator.share({
+			text: "I didn't get todays Heardle, can you? https://heardle.coasterfan5.com"
+		});
+	};
+
 	let guessIndex = $state(0);
 	let alreadyPlayed = $state(false);
+	let hasLost = $state(false);
 
 	onMount(() => {
 		const localStorePull = localStorage.getItem(data.dayId);
 		if (localStorePull != null) {
 			alreadyPlayed = true;
-			guessIndex = JSON.parse(localStorePull)['guesses'];
+			const localStorageJson = JSON.parse(localStorePull);
+			guessIndex = localStorageJson['guesses'];
+			if (localStorageJson['lost']) {
+				hasLost = true;
+			}
 		}
 	});
 </script>
@@ -70,7 +81,7 @@
 		<p class="tagLine">Almost!</p>
 		<p class="cta">Try again in {expiresFormat}!</p>
 		<div class="buttons">
-			<a href="##" class="button shareButton"> Share </a>
+			<a href="##" class="button shareButton" onclick={shareLoss}> Share </a>
 			<a href={resolve('/play/unlimited')} class="button"> Unlimited mode </a>
 			<a href="https://music.apple.com/us/song/{song.id}" class="button">Listen on Apple Music</a>
 		</div>
@@ -79,7 +90,11 @@
 
 <div class="container">
 	{#if alreadyPlayed}
-		{@render winScreen()}
+		{#if hasLost}
+			{@render lossScreen()}
+		{:else}
+			{@render winScreen()}
+		{/if}
 	{:else}
 		<Game
 			song={data.dailySongDetails}
@@ -89,7 +104,16 @@
 				localStorage.setItem(
 					data.dayId,
 					JSON.stringify({
+						lost: false,
 						guesses: guessIndex + 1
+					})
+				);
+			}}
+			onLoss={() => {
+				localStorage.setItem(
+					data.dayId,
+					JSON.stringify({
+						lost: true
 					})
 				);
 			}}

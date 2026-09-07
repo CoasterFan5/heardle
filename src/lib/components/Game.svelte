@@ -11,13 +11,15 @@
 		winScreen,
 		lossScreen,
 		guessIndex = $bindable(0),
-		onWin
+		onWin,
+		onLoss
 	}: {
 		song: SongObject;
 		winScreen: Snippet;
 		lossScreen: Snippet;
 		guessIndex?: number;
 		onWin?: () => void;
+		onLoss?: () => void;
 	} = $props();
 
 	let guesses: (string | null)[] = $state([null, null, null, null, null, null]);
@@ -44,6 +46,9 @@
 		} else {
 			guesses[guessIndex] = 'Skipped';
 			guessIndex += 1;
+		}
+		if (guessIndex >= 6) {
+			onLoss?.();
 		}
 	};
 </script>

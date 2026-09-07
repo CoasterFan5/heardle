@@ -13,6 +13,7 @@
 		</div>
 	</div>
 </div>
+<meta name="theme-color" content="#d60017" />
 
 <style lang="scss">
 	:global(body) {
@@ -24,6 +25,8 @@
 		--background-alt: #2c2c2c;
 		margin: 0px;
 		padding: 0px;
+
+		background: var(--background);
 	}
 
 	:global(*) {

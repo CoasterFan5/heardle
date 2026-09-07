@@ -2,6 +2,7 @@
 	import { durations } from './durations';
 	import PlayIcon from '~icons/ph/play';
 	import SkipIcon from '~icons/ph/fast-forward';
+	import { onMount } from 'svelte';
 
 	const {
 		songUrl,
@@ -15,9 +16,10 @@
 
 	let audioElement: undefined | HTMLAudioElement = undefined;
 
-	$effect(() => {
+	onMount(() => {
 		audioElement = new Audio();
 		audioElement.src = songUrl;
+		audioElement.addEventListener('play', doPlay);
 	});
 
 	let playing = false;
@@ -25,18 +27,18 @@
 
 	let to = setTimeout(() => {}, 0);
 
-	const doPlay = () => {
+	const doPlay = (e: HTMLMediaElementEventMap['play']) => {
 		if (!audioElement) {
 			console.log('no audio element');
 			return;
 		}
+		audioElement.currentTime = 0;
 
 		if (playing) {
 			audioElement.pause();
-			audioElement.currentTime = 0;
 			clearTimeout(to);
 			playing = false;
-			doPlay();
+			doPlay(e);
 			return;
 		}
 
@@ -51,7 +53,7 @@
 				return;
 			}
 			audioElement.pause();
-			audioElement.currentTime = audioElement.duration;
+			audioElement.currentTime = 0;
 			playing = false;
 		}, duration * 1000);
 	};
@@ -100,7 +102,12 @@
 	</canvas>
 	<div class="buttons">
 		<button class="skipIcon" style="opacity: 0"><SkipIcon /></button>
-		<button class="playButton" onclick={doPlay}><PlayIcon /></button>
+		<button
+			class="playButton"
+			onclick={() => {
+				audioElement?.play();
+			}}><PlayIcon /></button
+		>
 		<button
 			class="skipIcon"
 			onclick={() => {
